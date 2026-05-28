@@ -101,6 +101,12 @@
             animation: frost 0.5s infinite alternate;
         }
 
+        /* 대한민국 특별 칭호 스타일 */
+        .korea-title {
+            color: #ff4757 !important;
+            text-shadow: 0 0 20px rgba(255, 71, 87, 0.6), 0 0 10px #1e90ff !important;
+        }
+
         .weapon-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -174,10 +180,15 @@
             background: rgba(0, 198, 255, 0.1) !important;
             border: 1px dashed rgba(0, 198, 255, 0.4) !important;
         }
+        .summary-korea {
+            background: rgba(30, 144, 255, 0.1) !important;
+            border: 1px dashed rgba(255, 71, 87, 0.4) !important;
+        }
 
         .summary-box strong { color: #4ed9ff; }
         .summary-fire strong { color: #ff4b2b !important; }
         .summary-ice strong { color: #7bf0ff !important; }
+        .summary-korea strong { color: #ff4757 !important; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(15px); }
@@ -263,9 +274,9 @@ const weaponsData = {
     utility: ["수류탄", "섬광탄", "얼음 광선총", "점프 패드", "화염병", "C4", "연막탄", "전쟁의 뿔", "구급상자", "지뢰", "워프스톤", "그래플러"]
 };
 
-// 국가 데이터
+// 대한민국을 제외한 나머지 국가 데이터 리스트 (중복 방지)
 const worldCountries = [
-    "🇰🇷 대한민국", "🇺🇸 미국", "🇯🇵 일본", "🇨🇳 중국", "🇷🇺 러시아", "🇬🇧 영국", "🇩🇪 독일", "🇫🇷 프랑스", "🇨🇦 캐나다", "🇦🇺 호주", "🇧🇷 브라질", "🇮🇹 이탈리아", "🇪🇸 스페인", "🇮🇳 인도", "🇻🇳 베트남", "🇹🇭 태국", "🇹🇷 튀르키예", "🇲🇽 멕시코", "🇪🇬 이집트", "🇸🇦 사우디아라비아", "🇿🇦 남아프리카 공화국", "🇦🇷 아르헨티나", "🇳🇱 네덜란드", "🇸🇪 스웨덴", "🇨🇭 스위스", "🇳🇿 뉴질랜드", "🇵🇭 필리핀", "🇲🇾 말레이시아", "🇸🇬 싱가포르", "🇮🇩 인도네시아", "🇺🇦 우크라이나", "🇵🇱 폴란드", "🇳🇴 노르웨이", "🇩🇰 덴마크", "🇫🇮 핀란드", "🇮🇪 아일랜드", "🇧🇪 벨기에", "🇦🇹 오스트리아", "🇬🇷 그리스", "🇵🇹 포르투갈", "🇨🇿 체코", "🇭🇺 헝가리", "🇷🇴 루마니아", "🇧🇬 불가리아", "🇭🇷 크로아티아", "🇷🇸 세르비아", "🇸🇰 슬로바키아", "🇸🇮 슬로베니아", "🇺🇿 우즈베키스탄", "🇰🇿 카자흐스탄", "🇲🇳 몽골", "🇵🇰 파키스탄", "🇧🇩 방글라데시", "🇱🇰 스리랑카", "🇮🇷 이란", "🇮🇶 이라크", "🇮🇱 이스라엘", "🇦🇪 아랍에미리트", "🇶🇦 카타르", "🇰🇼 쿠웨이트", "🇴🇲 오만", "🇯🇴 요르단", "🇱🇧 레바논", "🇨🇱 칠레", "🇨🇴 콜롬비아", "🇵🇪 페루", "🇻🇪 베네수엘라", "🇪🇨 에콰도르", "🇧🇴 볼리비아", "🇵🇾 파라과이", "🇺🇾 우루과이", "🇨🇺 쿠바", "🇨🇷 코스타리카", "🇵🇦 파나마", "🇩🇴 도미니카 공화국", "🇬🇹 과테말라", "🇭🇳 온두라스", "🇸🇻 엘살바도르", "🇳🇮 니카라과", "🇲🇦 모로코", "🇩🇿 알제리", "🇹🇳 튀니지", "🇱🇾 리비아", "🇳🇬 나이지리아", "🇬🇭 가나", "🇰🇪 케냐", "🇪🇹 에티오피아", "🇹🇿 탄자니아", "🇺🇬 우간다", "🇲🇩 몰도바", "🇬🇪 조지아", "🇦🇲 아르메니아", "🇦🇿 아제르바이잔", "🇮🇸 아이슬란드", "🇱🇺 룩셈부르크", "🇲🇨 모나코", "🇻🇦 바티칸 시국", "🇲🇹 몰타", "🇨🇾 키프로스", "🇲🇲 미얀마", "🇰🇭 캄보디아", "🇱🇦 라오스", "🇳🇵 네팔", "🇧🇹 부탄", "🇲🇻 몰디브", "🇼🇸 사모아", "🇫🇯 피지", "🇹🇬 토고", "🇧🇭 바레인", "🇾🇪 예멘", "🇦🇩 안도라", "🇸🇲 산마리노", "🇱🇮 리히텐슈타인", "🇲🇬 마다가스카르", "🇦🇴 앙골라", "🇿🇲 잠비아", "🇿🇼 짐바브웨", "🇧🇼 보츠와나", "🇳🇦 나미비아", "🇲🇿 모زام비크", "🇨🇲 카메룬", "🇨🇬 콩고", "🇨🇩 콩고민주공화국", "🇬🇦 가봉", "🇨🇫 중앙아프리카 공화국", "🇹🇩 차드", "🇳🇪 니제르", "🇲🇱 말리", "🇸🇳 세네갈", "🇬🇲 감비아", "🇬🇳 기니", "🇸🇱 시에라리온", "🇱🇷 라이베리아", "🇨🇮 코트디부아르", "🇧🇫 부르키나파소", "🇧🇯 베냉", "🇪🇷 에리트레아", "🇩🇯 지부티", "🇸🇴 소말리아", "🇷🇼 르완다", "🇧🇮 부룬디", "🇲🇼 말라위", "🇱🇸 레소토", "🇸🇿 에스와티니", "🇲🇺 모리셔스", "🇸🇨 세이셸", "🇰🇲 코모로", "🇨🇻 카보베르데", "🇸🇹 상투메 프린시페", "🇬🇾 가이아나", "🇸🇷 수리남", "🇧🇸 바하마", "𝔍🇲 자메이카", "🇭🇹 아이티", "🇦🇬 안티가 바부다", "🇰🇳 세인트키츠 네비스", "🇩🇲 도미니카 연방", "🇱🇨 세인트루시아", "🇻🇨 세인트빈센트그레나딘", "🇧🇧 바베이도스", "🇬🇩 그레나다", "🇹🇹 트리니다드 토바고", "🇧🇿 벨리즈", "🇲🇭 마셜 제도", "🇫🇲 미크로네시아", "🇵🇼 팔라우", "🇬🇺 괌", "🇰🇮 키리바시", "🇹🇻 투발루", "🇳🇷 나우루", "🇸🇧 솔로몬 제도", "🇻🇺 바누아투", "🇹🇴 퉁가", "🇵🇬 파푸아뉴기니", "🇹🇱 동티모르", "🇧🇳 브루나이", "🇹🇯 타지키스탄", "🇰🇬 키르기스스탄", "🇹🇲 투르크메니스탄", "🇦🇫 아프가니스탄"
+    "🇺🇸 미국", "🇯🇵 일본", "🇨🇳 중국", "🇷🇺 러시아", "🇬🇧 영국", "🇩🇪 독일", "🇫🇷 프랑스", "🇨🇦 캐나다", "🇦🇺 호주", "🇧🇷 브라질", "🇮🇹 이탈리아", "🇪🇸 스페인", "🇮🇳 인도", "🇻🇳 베트남", "🇹🇭 태국", "🇹🇷 튀르키예", "🇲🇽 멕시코", "🇪🇬 이집트", "🇸🇦 사우디아라비아", "🇿🇦 남아프리카 공화국", "🇦🇷 아르헨티나", "🇳🇱 네덜란드", "🇸🇪 스웨덴", "🇨🇭 스위스", "🇳🇿 뉴질랜드", "🇵🇭 필리핀", "🇲🇾 말레이시아", "🇸🇬 싱가포르", "🇮🇩 인도네시아", "🇺🇦 우크라이나", "🇵🇱 폴란드", "🇳🇴 노르웨이", "🇩🇰 덴마크", "🇫🇮 핀란드", "🇮🇪 아일랜드", "🇧🇪 벨기에", "🇦🇹 오스트리아", "🇬🇷 그리스", "🇵🇹 포르투갈", "🇨🇿 체코", "🇭🇺 헝가리", "🇷🇴 루마니아", "🇧🇬 불가리아", "🇭🇷 크로아티아", "🇷🇸 세르비아", "🇸🇰 슬로바키아", "🇸🇮 슬로베 نیا", "🇺🇿 우즈베키스탄", "🇰🇿 카자흐스탄", "🇲🇳 몽골", "🇵🇰 파키스탄", "🇧🇩 방글라데시", "🇱🇰 스리랑카", "🇮🇷 이란", "🇮🇶 이라크", "🇮🇱 이스라엘", "🇦🇪 아랍에미리트", "🇶🇦 카타르", "🇰🇼 쿠웨이트", "🇴🇲 오만", "🇯🇴 요르단", "🇱🇧 레바논", "🇨🇱 칠레", "🇨🇴 콜롬비아", "🇵🇪 페루", "🇻🇪 베네수엘라", "🇪🇨 에콰도르", "🇧🇴 볼리비아", "🇵🇾 파라과이", "🇺🇾 우루과이", "🇨🇺 쿠바", "🇨🇷 코스타리카", "🇵🇦 파나마", "🇩🇴 도미니카 공화국", "🇬🇹 과테말라", "🇭🇳 온두라스", "🇸🇻 엘살바도르", "🇳🇮 니카라과", "🇲🇦 모로코", "🇩🇿 알제리", "🇹🇳 튀니지", "🇱🇾 리비아", "🇳🇬 나이지리아", "🇬🇭 가나", "🇰🇪 케냐", "🇪🇹 에티오피아", "🇹🇿 탄자니아", "🇺🇬 우간다", "🇲🇩 몰도바", "🇬🇪 조지아", "🇦🇲 아르메니아", "🇦🇿 아제르바이잔", "🇮🇸 아이슬란드", "🇱🇺 룩셈부르크", "🇲🇨 모나코", "🇻🇦 바티칸 시국", "🇲🇹 몰타", "🇨🇾 키프로스", "🇲🇲 미얀마", "🇰🇭 캄보디아", "🇱🇦 라오스", "🇳🇵 네팔", "🇧🇹 부탄", "🇲🇻 몰디브", "🇼🇸 사모아", "🇫🇯 피지", "🇹🇬 토고", "🇧🇭 바레인", "🇾🇪 예멘", "🇦🇩 안도라", "🇸🇲 산마리노", "🇱🇮 리히텐슈타인", "🇲🇬 마다가스카르", "🇦🇴 앙골라", "🇿🇲 잠비아", "🇿🇼 짐바브웨", "🇧🇼 보츠와나", "🇳🇦 나미비아", "🇲🇿 모زام비크", "🇨🇲 카메룬", "🇨🇬 콩고", "🇨🇩 콩고민주공화국", "🇬🇦 가봉", "🇨🇫 중앙아프리카 공화국", "🇹🇩 차드", "🇳🇪 니제르", "🇲🇱 말리", "🇸🇳 세네갈", "🇬慢 감비아", "🇬🇳 기니", "🇸🇱 시에라리온", "🇱🇷 라이베리아", "🇨🇮 코트디부아르", "🇧🇫 부르키나파소", "🇧🇯 베냉", "🇪🇷 에리트레아", "🇩🇯 지부티", "🇸🇴 소말리아", "🇷🇼 르완다", "🇧🇮 부룬디", "🇲🇼 말라위", "🇱🇸 레소토", "🇸🇿 에스와티니", "🇲🇺 모리셔스", "🇸🇨 세이셸", "🇰🇲 코모로", "🇨🇻 카보베르데", "🇸🇹 상투메 프린시페", "🇬🇾 가이아나", "🇸🇷 수리남", "🇧🇸 바하마", "𝔍🇲 자메이카", "🇭🇹 아이티", "🇦🇬 안티가 바부다", "🇰🇳 세인트키츠 네비스", "🇩🇲 도미니카 연방", "🇱🇨 세인트루시아", "🇻🇨 세인트빈센트그레나딘", "🇧🇧 바베이도스", "🇬🇩 그레나다", "🇹🇹 트리니다드 토바고", "🇧🇿 벨리즈", "🇲🇭 마셜 제도", "🇫🇲 미크로네시아", "🇵🇼 팔라우", "🇬🇺 괌", "🇰🇮 키리바시", "🇹🇻 투발루", "🇳🇷 나우루", "🇸🇧 솔로몬 제도", "🇻🇺 바누아투", "🇹🇴 퉁가", "🇵🇬 파푸아뉴기니", "🇹🇱 동티모르", "🇧🇳 브루나이", "🇹🇯 타지키스탄", "🇰🇬 키르기스스탄", "🇹🇲 투르크메니스탄", "🇦🇫 아프가니스탄"
 ];
 
 function generateSummary(countryName) {
@@ -285,7 +296,6 @@ function startRoulette() {
     const btn = document.getElementById('spin-btn');
     const resultBox = document.getElementById('result-box');
     
-    // 원래 '띠리링'을 요청하신 '두구두구...'로 변경!
     btn.innerText = "두구두구...";
     btn.disabled = true;
     
@@ -301,6 +311,8 @@ function startRoulette() {
             resultBox.innerHTML = `<div class="country-name fire-title">🔥 불조합 (HOT!)</div>`;
         } else if (rand < 0.3) {
             resultBox.innerHTML = `<div class="country-name ice-title">❄️ 얼음조합 (COLD!)</div>`;
+        } else if (rand < 0.4) {
+            resultBox.innerHTML = `<div class="country-name korea-title">🇰🇷 대한민국</div>`;
         } else {
             const randomIndex = Math.floor(Math.random() * worldCountries.length);
             resultBox.innerHTML = `<div class="country-name">${worldCountries[randomIndex]}</div>`;
@@ -319,6 +331,7 @@ function startRoulette() {
             const finalRand = Math.random(); 
             
             if (finalRand < 0.10) { 
+                // 1) 10% 확률 보너스
                 playWinSound(); 
                 resultBox.innerHTML = `
                     <div class="country-name">🎁 BONUS (보너스)</div>
@@ -330,6 +343,7 @@ function startRoulette() {
                     </div>
                 `;
             } else if (finalRand < 0.20) { 
+                // 2) 10% 확률 불조합
                 playWinSound(); 
                 resultBox.innerHTML = `
                     <div class="country-name fire-title">🔥 불조합 (HOT!)</div>
@@ -347,84 +361,4 @@ function startRoulette() {
                             <div class="weapon-name">전기톱</div>
                         </div>
                         <div class="weapon-card" style="border-top-color: #d2691e;">
-                            <div class="weapon-type">🟢 유틸리티</div>
-                            <div class="weapon-name">화염병</div>
-                        </div>
-                    </div>
-                    <div class="summary-box summary-fire">
-                        💡 <strong>조합 분석:</strong> 전장을 불바다로 만들어 흔적도 없이 소탕해 버리는 화끈한 파괴 전용 불지옥 세팅입니다!
-                    </div>
-                `;
-            } else if (finalRand < 0.30) {
-                playWinSound(); 
-                resultBox.innerHTML = `
-                    <div class="country-name ice-title">❄️ 얼음조합 (COLD!)</div>
-                    <div class="weapon-grid">
-                        <div class="weapon-card" style="border-top-color: #00ffff;">
-                            <div class="weapon-type">🔴 주무기</div>
-                            <div class="weapon-name">만년서리</div>
-                        </div>
-                        <div class="weapon-card" style="border-top-color: #00bfff;">
-                            <div class="weapon-type">🟠 보조무기</div>
-                            <div class="weapon-name">쇼티</div>
-                        </div>
-                        <div class="weapon-card" style="border-top-color: #1e90ff;">
-                            <div class="weapon-type">🟡 근접무기</div>
-                            <div class="weapon-name">나이프</div>
-                        </div>
-                        <div class="weapon-card" style="border-top-color: #4682b4;">
-                            <div class="weapon-type">🟢 유틸리티</div>
-                            <div class="weapon-name">얼음 광선총</div>
-                        </div>
-                    </div>
-                    <div class="summary-box summary-ice">
-                        💡 <strong>조합 분석:</strong> 상대를 순식간에 동결시켜 꼼짝 못 하게 무력화하는 극지방 기조의 절대 냉각 세팅입니다!
-                    </div>
-                `;
-            } else {
-                playNormalEndSound(); 
-                const finalCountry = worldCountries[Math.floor(Math.random() * worldCountries.length)];
-                const mainWp = weaponsData.main[Math.floor(Math.random() * weaponsData.main.length)];
-                const subWp = weaponsData.sub[Math.floor(Math.random() * weaponsData.sub.length)];
-                const meleeWp = weaponsData.melee[Math.floor(Math.random() * weaponsData.melee.length)];
-                const utilityWp = weaponsData.utility[Math.floor(Math.random() * weaponsData.utility.length)];
-                
-                resultBox.innerHTML = `
-                    <div class="country-name">${finalCountry}</div>
-                    <div class="weapon-grid">
-                        <div class="weapon-card" style="border-top-color: #ff416c;">
-                            <div class="weapon-type">🔴 주무기</div>
-                            <div class="weapon-name">${mainWp}</div>
-                        </div>
-                        <div class="weapon-card" style="border-top-color: #ff4b2b;">
-                            <div class="weapon-type">🟠 보조무기</div>
-                            <div class="weapon-name">${subWp}</div>
-                        </div>
-                        <div class="weapon-card" style="border-top-color: #00c6ff;">
-                            <div class="weapon-type">🟡 근접무기</div>
-                            <div class="weapon-name">${meleeWp}</div>
-                        </div>
-                        <div class="weapon-card" style="border-top-color: #2ed573;">
-                            <div class="weapon-type">🟢 유틸리티</div>
-                            <div class="weapon-name">${utilityWp}</div>
-                        </div>
-                    </div>
-                    <div class="summary-box">
-                        💡 <strong>조합 분석:</strong> ${generateSummary(finalCountry)}
-                    </div>
-                `;
-            }
-            
-            btn.innerText = "룰렛돌리기";
-            btn.disabled = false;
-        } else {
-            setTimeout(roll, currentInterval);
-        }
-    }
-
-    setTimeout(roll, currentInterval);
-}
-</script>
-
-</body>
-</html>
+                            <div class="weapon-type
